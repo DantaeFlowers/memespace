@@ -32,3 +32,5 @@ INSERT INTO posts (imgURL, caption, poster_id)
 
 SELECT * FROM users;
 SELECT * FROM posts;
+
+DELETE FROM users WHERE id = 1;

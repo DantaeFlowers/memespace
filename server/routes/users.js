@@ -60,7 +60,7 @@ router.post('/register', async (req, res)=>{
         await db.none(insertQuery,[firstname, lastname, username, email])
         res.json({
             status : 'success',  
-            message: 'User has been created'
+            message: 'User has been created',
             body: body
         })
     } catch (error) {
@@ -71,19 +71,19 @@ router.post('/register', async (req, res)=>{
 })
 
 //removing a user
-router.delete('/:id', (req, res) =>{
-let id = req.params.id
-try{
-    let removedUser = await db.one(`DELETE FROM users WHERE id = ${id}`)
-    res.json({
-        message: `Success! User ${id} has been removed.`
-    })
-} catch (error) {
-    res.json({
-        message: `Unable to remove user.`
-    })
-}
-})
+// router.delete('/:id', (req, res) =>{
+// let id = req.params.id
+// try{
+//     let removedUser = await db.one(`DELETE FROM users WHERE id = ${id}`)
+//     res.json({
+//         message: `Success! User ${id} has been removed.`
+//     })
+// } catch (error) {
+//     res.json({
+//         message: `Unable to remove user.`
+//     })
+// }
+// })
 
 
 module.exports = router;
