@@ -2,11 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const pgp = require('pg-promise')();
-const connection = {
-    host: 'localhost',
-    port: 5432,
-    database: 'databasesql',
-}
+const connection = "postgress://localhost:5432/databasesql";
 const db = pgp(connection);
 
 router.get('/', async (req, res) => {

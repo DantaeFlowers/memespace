@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const usersRouter = require("./routes/users.js")
-const postsRouter = require("./routes/posts.js")
+const postsRouter = require("./routes/posts.js").router;
 const port = 8080;
 
 app.use(cors());
