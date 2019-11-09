@@ -16,13 +16,13 @@ CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     imgURL VARCHAR,
     caption VARCHAR,
-    poster_id INT REFERENCES users (id)
+    poster_id INT REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE likes (
     post_id INT REFERENCES posts (id),
-    posters_id INT REFERENCES users (id),
-    liker_id INT REFERENCES users (id);
+    posters_id INT REFERENCES users (id) ON DELETE CASCADE,
+    liker_id INT REFERENCES users (id) ON DELETE CASCADE
 );
 
 INSERT INTO users (firstname, lastname, username, email)
@@ -37,6 +37,3 @@ INSERT INTO posts (imgURL, caption, poster_id)
             ('https://pics.me.me/1428-real-facr-epstein-didnt-kill-himself-real-facts-plastic-65110683.png', 'I really do love snapple too!', 1),
             ('https://static3.cbrimages.com/wordpress/wp-content/uploads/2019/05/Spider-Man-meme.jpeg', 'I like the spiderman one', 4);
 
-
-SELECT * FROM users;
-SELECT * FROM posts;
