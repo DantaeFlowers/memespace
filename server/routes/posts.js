@@ -5,9 +5,10 @@ const pgp = require('pg-promise')();
 const connection = "postgress://localhost:5432/databasesql";
 const db = pgp(connection);
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
+    let id = req.params.id
    try {
-       let posts = await db.any('SELECT * FROM posts');
+       let posts = await db.any(`SELECT * FROM posts WHERE id = ${id}`);
        res.json({
            payload: posts,
            message: `success. retrieved all users posts`
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
    }
 })
 
-router.post('/register', async (req, res) => {
+router.post('/posts/register', async (req, res) => {
   console.log(req.body);
   try {
       let insertQuery = `
@@ -41,7 +42,21 @@ router.post('/register', async (req, res) => {
   }
 })
 
-router.patch('/:id', (req, res) => {
+router.delete('/posts/:id', async (req, res) => {
+    let id = req.params.id
+    try {
+        let deletePost = await db.none(`DELETE FROM posts WHERE id = ${id}`)
+        res.json({
+            message: `Post ${id} was deleted`
+        })
+    } catch (error){
+        res.json({
+            message: `Cannot remove post`
+        })
+    }
+})
+
+router.patch('/posts/:id', (req, res) => {
     let newDetails = req.body;
     let id = parseInt(req.params.id)
   
