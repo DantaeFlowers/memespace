@@ -50,9 +50,6 @@ router.patch('/:id', (req, res) => {
     let id = parseInt(req.params.id)
   
     console.log('newDetails', newDetails)
-  
-    let updatedItem = myInventory.updateItem(id, newDetails, 'vegetable')
-    res.json(updatedItem)
-  })
+})
 
 module.exports = {router: router, db: db};
