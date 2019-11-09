@@ -8,6 +8,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     firstname VARCHAR,
     lastname VARCHAR,
+    userImage VARCHAR,
     username VARCHAR UNIQUE,
     email VARCHAR UNIQUE
 );
@@ -25,11 +26,11 @@ CREATE TABLE likes (
     liker_id INT REFERENCES users (id) ON DELETE CASCADE
 );
 
-INSERT INTO users (firstname, lastname, username, email)
-    VALUES ('Dantae', 'Flowers', 'DantaeFlowers', 'dantaeflowers@pursuit.org'),
-            ('Suzette', 'Islam', 'SuzetteIslam', 'suzetteislam@pursuit.org'),
-            ('Peter', 'Fiorentino', 'PFiorentino', 'peterfiorentino@pursuit.org'),
-            ('Giselle', 'Sanchez', 'GSanchez', 'gisellesanchez@pursuit.org');
+INSERT INTO users (firstname, lastname, userImage, username, email)
+    VALUES ('Dantae', 'Flowers', 'https://media.licdn.com/dms/image/C4D03AQHpad0BF1ix1A/profile-displayphoto-shrink_800_800/0?e=1578528000&v=beta&t=VPvnPqXONJZSgECDpnkA-S2Yef4rE1P6p1FPTxBr_vk', 'DantaeFlowers', 'dantaeflowers@pursuit.org'),
+            ('Suzette', 'Islam', 'https://media.licdn.com/dms/image/C4D03AQGNQu1S1tPbBg/profile-displayphoto-shrink_800_800/0?e=1578528000&v=beta&t=6dDtojTTGvlSTHKsEKFdZyxntYiuoBrRI14fba64cMQ', 'SuzetteIslam', 'suzetteislam@pursuit.org'),
+            ('Peter', 'Fiorentino','https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/16195442_1379707448709134_1649181788578759748_n.jpg?_nc_cat=101&_nc_oc=AQmk6eLhUdUWSSbKqC66VTCsMoXGJlab3jtriIgXAh4e8Kbv2N7O59s3_3tqPwnG1Ow&_nc_ht=scontent-lga3-1.xx&oh=0d7c45d666ad32e328ad2ec583a6fe2e&oe=5E5D624F', 'PFiorentino', 'peterfiorentino@pursuit.org'),
+            ('Giselle', 'Sanchez', 'https://media.licdn.com/dms/image/C4E03AQHKmfvQpkRZaA/profile-displayphoto-shrink_800_800/0?e=1578528000&v=beta&t=1Pmb7aPR2XvPHZghBtOZ3Zopnhw8Od0gNHc5hllTdW8','GSanchez', 'gisellesanchez@pursuit.org');
 
 INSERT INTO posts (imgURL, caption, poster_id)
     VALUES ('https://pics.me.me/when-youre-getting-roasted-but-you-got-no-comebacks-the-14043476.png', 'Why is his face like that?', 3),
