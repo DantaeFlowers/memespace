@@ -23,7 +23,7 @@ CREATE TABLE likes (
     post_id INT REFERENCES posts (id),
     posters_id INT REFERENCES users (id),
     liker_id INT REFERENCES users (id);
-)
+);
 
 INSERT INTO users (firstname, lastname, username, email)
     VALUES ('Dantae', 'Flowers', 'DantaeFlowers', 'dantaeflowers@pursuit.org'),
