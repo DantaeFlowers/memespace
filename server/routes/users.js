@@ -5,7 +5,7 @@ const db = posts.db;
 
 
 // retrieving all users
-router.get('/', async (req,res)=>{
+router.get('/',  async (req,res)=>{
     try {
         let users = await db.any("SELECT * FROM users")
         res.json({
@@ -24,7 +24,7 @@ router.get('/', async (req,res)=>{
 
 // retrieving user by id
 router.get('/:id', async(req, res)=>{
-    let id = req.params.id
+    let id = Number(req.params.id)
     try {
         let user = await db.one(`SELECT * FROM users WHERE id = ${id}`)
         res.json({
@@ -71,14 +71,16 @@ router.post('/register', async (req, res)=>{
 })
 
 //removing a user
-router.delete('/:id', (req, res) =>{
-let id = req.params.id
+router.delete('/:id', async(req, res) =>{
+let id = Number(req.params.id);
+console.log(id)
 try{
-    let removedUser = await db.one(`DELETE FROM users WHERE id = ${id}`)
+    let removedUser =  await db.none(`DELETE FROM users WHERE id = ${id}`)
     res.json({
         message: `Success! User ${id} has been removed.`
     })
 } catch (error) {
+    console.log(error)
     res.json({
         message: `Unable to remove user.`
     })
