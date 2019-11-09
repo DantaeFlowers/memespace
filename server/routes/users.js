@@ -60,7 +60,7 @@ router.post('/register', async (req, res)=>{
         await db.none(insertQuery,[firstname, lastname, username, email])
         res.json({
             status : 'success',  
-            message: 'User has been created'
+            message: 'User has been created',
             body: body
         })
     } catch (error) {
