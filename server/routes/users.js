@@ -74,7 +74,7 @@ router.post('/register', async (req, res)=>{
 router.delete('/:id', (req, res) =>{
 let id = req.params.id
 try{
-    let removedUser = await db.one(`DELETE * FROM users WHERE id = ${id}`)
+    let removedUser = await db.one(`DELETE FROM users WHERE id = ${id}`)
     res.json({
         message: `Success! User ${id} has been removed.`
     })
