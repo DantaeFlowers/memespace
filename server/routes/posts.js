@@ -42,10 +42,10 @@ router.post('/posts/register', async (req, res) => {
   }
 })
 
-router.delete('/posts/:id', (req, res) => {
+router.delete('/posts/:id', async (req, res) => {
     let id = req.params.id
     try {
-        let deletePost = await db.one(`DELETE FROM posts WHERE id = ${id}`)
+        let deletePost = await db.none(`DELETE FROM posts WHERE id = ${id}`)
         res.json({
             message: `Post ${id} was deleted`
         })
