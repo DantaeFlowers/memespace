@@ -5,6 +5,22 @@ const pgp = require('pg-promise')();
 const connection = "postgress://localhost:5432/databasesql";
 const db = pgp(connection);
 
+router.get('/', async (req, res) => {
+   try {
+       let posts = await db.any(`SELECT * FROM posts`);
+       res.json({
+           payload: posts,
+           message: `success. retrieved all posts`
+       });
+   } catch (error) {
+       res.status(500);
+       res.json({
+           message: `Error. Something went wrong!`
+       })
+       console.log(error);
+   }
+})
+
 router.get('/:id', async (req, res) => {
     let id = req.params.id
    try {
