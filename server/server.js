@@ -15,6 +15,10 @@ app.use('/users', usersRouter)
 
 app.use('/posts', postsRouter)
 
+// app.get('/about-us', (req, res)=>{
+//     console.log('LOL HI')
+// })
+
 app.listen(port, () => {
     console.log(`Server is running at port ${port}`)
 })
