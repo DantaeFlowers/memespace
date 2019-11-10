@@ -41,29 +41,32 @@ router.get('/:id', async(req, res)=>{
 
 // creating a new user 
 router.post('/register', async (req, res)=>{
-    let insertQuery =  `INSERT INTO users(firstname, lastname, username, email)
-    VALUES($1, $2, $3, $4)`
+    let insertQuery =  `INSERT INTO users(firstname, lastname, username, email, userPassword)
+    VALUES($1, $2, $3, $4, $5);`
 
     let firstname = req.body.firstname
     let lastname = req.body.lastname
     let username = req.body.username 
     let email = req.body.email
+    let userPassword = req.body.userPassword
 
     let body = {
         firstname: firstname,
         lastname: lastname, 
         username: username,
-        email: email
+        email: email,
+        userPassword: userPassword
     }
 
     try{
-        await db.none(insertQuery,[firstname, lastname, username, email])
+        await db.none(insertQuery,[firstname, lastname, username, email, userPassword])
         res.json({
             status : 'success',  
             message: 'User has been created',
             body: body
         })
     } catch (error) {
+        console.log(error)
         res.json({
             message: 'There has been an error registering the user'
         })
