@@ -8,10 +8,10 @@ const db = pgp(connection);
 router.get('/:id', async (req, res) => {
     let id = req.params.id
    try {
-       let posts = await db.any(`SELECT * FROM posts WHERE id = ${id}`);
+       let posts = await db.one(`SELECT * FROM posts WHERE id = ${id}`);
        res.json({
            payload: posts,
-           message: `success. retrieved all users posts`
+           message: `success. retrieved the post`
        });
    } catch (error) {
        res.status(500);
@@ -22,15 +22,15 @@ router.get('/:id', async (req, res) => {
    }
 })
 
-router.post('/posts/register', async (req, res) => {
-  console.log(req.body);
+router.post('/register', async (req, res) => {
+//   console.log(req.body);
   try {
       let insertQuery = `
-      INSERT INTO posts(poster_id, body)
-      VALUES($1, $2)  
+      INSERT INTO posts(imgURL, caption, poster_id)
+      VALUES($1, $2, $3)  
       ` 
       
-      await db.none(insertQuery, [req.body.poster_id , req.body.body]);
+      await db.none(insertQuery, [req.body.imgURL, req.body.caption, req.body.poster_id]);
       res.json({
           payload: req.body,
           message: `Post was sent!`
@@ -39,10 +39,11 @@ router.post('/posts/register', async (req, res) => {
       res.json({
           message: `There was an error!`
       })
+      console.log(error)
   }
 })
 
-router.delete('/posts/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     let id = req.params.id
     try {
         let deletePost = await db.none(`DELETE FROM posts WHERE id = ${id}`)
@@ -53,14 +54,28 @@ router.delete('/posts/:id', async (req, res) => {
         res.json({
             message: `Cannot remove post`
         })
+        console.log(error);
     }
 })
 
-router.patch('/posts/:id', (req, res) => {
-    let newDetails = req.body;
-    let id = parseInt(req.params.id)
-  
-    console.log('newDetails', newDetails)
+router.patch('/:id', async (req, res) => {
+    let caption = req.body.caption;
+    let id = Number(req.params.id);
+    // console.log(newCaption, id)
+    try{
+        let patchPost = `UPDATE posts SET caption = $1 WHERE id = $2`
+        await db.none(patchPost, [caption, id])
+        res.json({
+            payload: req.body,
+            message: "Caption was changed"
+        })
+    } catch (error) {
+        res.json({
+            message: 'There was an error'
+        })
+        console.log(error);
+    }
+
 })
 
 module.exports = {router: router, db: db};
