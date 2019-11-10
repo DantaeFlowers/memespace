@@ -1,16 +1,23 @@
 document.addEventListener("DOMContentLoaded", ()=> {
     console.log("DOM Content Loaded");
-    // let loginForm = document.querySelector("#login");
-    // loginForm.addEventListener("submit", getUser);
     let registerForm = document.querySelector("#register");
     registerForm.addEventListener("submit", registerUser);
 })
-const getUser = (event) => {
+const registerUser = async (event) => {
     event.preventDefault();
-    //reroutes to /users/:id endpoint
-    console.log("testing getUser axios request");
-}
-const registerUser = (event) => {
-    event.preventDefault();
-    console.log("testing registerUser axios request")
+    let firstName = document.querySelector("#first_name_input").value;
+    let lastName = document.querySelector("#last_name_input").value;
+    let userName = document.querySelector("#username_input").value;
+    let email = document.querySelector("#email_input").value;
+    let password = document.querySelector("#register_password").value;
+    let url = `http://localhost:8080/users/register`
+    let data = {
+        "firstname": firstName, 
+        "lastname": lastName, 
+        "username": userName, 
+        "email": email, 
+        "userPassword": password
+    };
+    let createdUserObj = await axios.post(url, data).then((response) => {console.log(response.data)})
+    console.log(createdUserObj)
 }
