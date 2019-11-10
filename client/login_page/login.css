@@ -9,6 +9,8 @@ body {
 }
 .input {
     padding: 10px;
+    margin: 5px;
+    width: 80%;
 }
 #login_header {
     display: flex;
@@ -19,4 +21,8 @@ body {
     justify-content: end;
     margin-top: 10px;
     float: right;
+}
+#register_link {
+    float: right;
+    font-size: 4vh;
 }
