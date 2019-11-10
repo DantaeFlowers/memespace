@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
 }
-.login {
+.register {
     margin: auto;
     padding: 50px;
     display: flex;
@@ -18,11 +18,11 @@ body {
     margin: 5px;
     width: 90%;
 }
-#login_header {
+#register_header {
     display: flex;
     justify-content: center;
 }
-#login_submit {
+#register_submit {
     display: flex;
     justify-content: end;
     margin-top: 10px;
