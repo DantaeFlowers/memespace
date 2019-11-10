@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
     <title>Memespace</title>
 </head>
 <body>
-    <div id="login_container">
+    <div id = "login_div">
         <h3>Login</h3>
         <form id="login">
-        <input type="text" placeholder="Type email here" id="email_login">
+        <input type="text" placeholder="Username" id="login_username">
         <br>
-        <input type="password" placeholder="Type password here" id="password_login">
+        <input type="password" placeholder="Password" id="login_password">
         <br>
         <button type="submit" id="login_submit">Login</button>
+        <br>
+        </form>
+    </div>
+    <div id = "register_div">
+        <h3>Register</h3>
+        <form id="register">
+        <input type="text" placeholder="First Name" id="first_name_input">
+        <br>
+        <input type="text" placeholder="Last Name" id="last_name_input">
+        <br>
+        <input type="text" placeholder="Username" id="username_input">
+        <br>
+        <input type="text" placeholder="Email" id="register_email">
+        <br>
+        <input type="password" placeholder="Password" id="register_password">
+        <br>
+        <button type="submit" id="register_submit">Register!</button>
         </form>
     </div>
 </body>
