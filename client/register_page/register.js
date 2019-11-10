@@ -19,5 +19,5 @@ const registerUser = async (event) => {
         "userPassword": password
     };
     let createdUserObj = await axios.post(url, data).then((response) => {console.log(response.data)})
-    console.log(createdUserObj)
+    
 }
