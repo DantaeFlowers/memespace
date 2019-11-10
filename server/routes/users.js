@@ -34,7 +34,7 @@ router.get('/:id', async(req, res)=>{
     } catch (error) {
         console.log(error)
         res.json({
-            message: "Error. Something went wrong."
+            message: "Something went wrong."
         })
     }
 })
@@ -68,7 +68,7 @@ router.post('/register', async (req, res)=>{
     } catch (error) {
         console.log(error)
         res.json({
-            message: 'There has been an error registering the user'
+            message: error.detail
         })
     }
 })
