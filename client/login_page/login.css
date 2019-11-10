@@ -1,16 +1,22 @@
+html, body {
+    height: 100%;
+}
+
 body {
     display: flex;
     justify-content: center;
 }
 .login {
+    margin: auto;
     padding: 50px;
     display: flex;
     flex-flow: column;
+    width: 28%;
 }
 .input {
     padding: 10px;
     margin: 5px;
-    width: 80%;
+    width: 90%;
 }
 #login_header {
     display: flex;
@@ -23,6 +29,6 @@ body {
     float: right;
 }
 #register_link {
-    float: right;
-    font-size: 4vh;
+    padding-left: 17%;
+    font-size: 94%;
 }
