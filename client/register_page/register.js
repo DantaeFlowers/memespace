@@ -18,6 +18,6 @@ const registerUser = async (event) => {
         "email": email, 
         "userPassword": password
     };
-    let createdUserObj = await axios.post(url, data).then((response) => {console.log(response.data)})
+    let createdUserObj = await axios.post(url, data).then((response) => {console.log(response.data.body)})
     
 }
