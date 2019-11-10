@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="./login.js"></script>
+    <link rel="stylesheet" href="./login.css">
     <title>Memespace</title>
 </head>
 <body>
-    <div id = "login_div">
-        <h3>Login</h3>
+    <div id = "login_div" class="login">
+        <h3 id="login_header">Login</h3>
         <form id="login">
-        <input type="text" placeholder="Username" id="login_username">
+        <input type="text" placeholder="Username" id="login_username" class="input">
         <br>
-        <input type="password" placeholder="Password" id="login_password">
+        <input type="password" placeholder="Password" id="login_password" class="input">
         <br>
         <button type="submit" id="login_submit">Login</button>
         <br>
         </form>
     </div>
-    <div id = "register_div">
+    <!-- <div id = "register_div">
         <h3>Register</h3>
         <form id="register">
         <input type="text" placeholder="First Name" id="first_name_input">
@@ -35,6 +36,6 @@
         <br>
         <button type="submit" id="register_submit">Register!</button>
         </form>
-    </div>
+    </div> -->
 </body>
 </html>

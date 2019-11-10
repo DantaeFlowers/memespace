@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+.login {
+    padding: 50px;
+    display: flex;
+    flex-flow: column;
+}
+.input {
+    padding: 10px;
+}
+#login_header {
+    display: flex;
+    justify-content: center;
+}
+#login_submit {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    float: right;
+}
