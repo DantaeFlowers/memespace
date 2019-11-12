@@ -46,7 +46,9 @@ async function loadUserInfo () {
 //    //const id2 = Math.floor(Math.random()* MAX) + MIN
 //    return id
 // };
-  
+
+//...
+
 function createUserCard (userArr) {
    for(let i =0; i < userArr.length; i++){
       let userName = (userArr[i].username);
