@@ -18,6 +18,10 @@ body {
     margin: 5px;
     width: 90%;
 }
+.sucess {
+    color: teal;
+    font-weight: 200;
+}
 #register_header {
     display: flex;
     justify-content: center;
