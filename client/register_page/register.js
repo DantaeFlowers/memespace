@@ -10,7 +10,7 @@ const registerUser = async (event) => {
     let userName = document.querySelector("#username_input").value;
     let email = document.querySelector("#email_input").value;
     let password = document.querySelector("#register_password").value;
-    let url = `http://localhost:8080/users/register`
+    let url = `http://localhost:8080/users/register`;
     let data = {
         "firstname": firstName, 
         "lastname": lastName, 
@@ -18,6 +18,22 @@ const registerUser = async (event) => {
         "email": email, 
         "userPassword": password
     };
-    let createdUserObj = await axios.post(url, data).then((response) => {console.log(response.data)})
-    
+        await axios.post(url, data)
+        .then((response) => {
+            if(response.data.status === "success") {
+                console.log(response)
+                nextPage(response);
+            }
+        })
+    }
+const nextPage = (response) => {
+    let containerDiv = document.querySelector("#register_div");
+    let pTag = document.createElement("p");
+        pTag.innerText = response.data.message;
+        pTag.className = "success";
+        containerDiv.append(pTag);
+    window.setTimeout(window.location = "../feed/feed.html", 4000);
 }
+// const showError = (error) => {
+//     console.log("error")
+// }
