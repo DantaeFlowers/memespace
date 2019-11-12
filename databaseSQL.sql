@@ -45,7 +45,8 @@ INSERT INTO posts (imgURL, caption, username)
     VALUES ('https://pics.me.me/when-youre-getting-roasted-but-you-got-no-comebacks-the-14043476.png', 'Why is his face like that?', 'PFiorentino'),
             ('https://pbs.twimg.com/media/Dd0w7y9UQAAY2hW.jpg', 'All he is missing is the Timberland boots', 'SuzetteIslam'),
             ('https://pics.me.me/1428-real-facr-epstein-didnt-kill-himself-real-facts-plastic-65110683.png', 'I really do love snapple too!', 'DantaeFlowers'),
-            ('https://static3.cbrimages.com/wordpress/wp-content/uploads/2019/05/Spider-Man-meme.jpeg', 'I like the spiderman one', 'GSanchez');
+            ('https://static3.cbrimages.com/wordpress/wp-content/uploads/2019/05/Spider-Man-meme.jpeg', 'I like the spiderman one', 'GSanchez'),
+            ('https://i.imgflip.com/3g1d4k.jpg', 'Ben Be Like', 'PFiorentino');
 
 INSERT INTO likes (post_id, posters_id, liker_id)
     VALUES (1, 3, 4),
