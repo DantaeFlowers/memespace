@@ -18,7 +18,7 @@ CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     imgURL VARCHAR,
     caption VARCHAR,
-    username  VARCHAR REFERENCES users (username) ON DELETE CASCADE
+    username  VARCHAR
 );
 
 CREATE TABLE likes (
