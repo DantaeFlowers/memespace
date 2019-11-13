@@ -4,8 +4,14 @@ loadUserInfo();
 //loadPost();
 })
 
+async function loadAUser() {
+   const url2 =`http://localhost:8080/users/${id}`
+   console.log('User has been loaded')
+}
+
 async function loadUserInfo () {
    const url = 'http://localhost:8080/users/'
+   const url2 =`http://localhost:8080/users/${id}`
       console.log('page has loaded');
       try{
         
@@ -15,8 +21,9 @@ async function loadUserInfo () {
         
         {return response.data.payload});
         
-        console.log(userArr)
+        console.log("userArr", userArr)
         
+
         createUserCard(userArr)
 
 
@@ -52,9 +59,9 @@ async function loadUserInfo () {
 function createUserCard (userArr) {
    for(let i =0; i < userArr.length; i++){
       let userName = (userArr[i].username);
-      let userImage = (userArr[i].userimage);
+      let userimage = (userArr[i].userImage);
       let email = (userArr[i].email);
-      displayUserCard(userName, userImage, email);
+      displayUserCard(userName, userimage, email);
       }
 }
 
