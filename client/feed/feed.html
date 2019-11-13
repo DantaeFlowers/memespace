@@ -3,8 +3,12 @@
 <head>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src = './feed.js'></script>
+    <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"></script>
     <link href = "./feed.css" rel='stylesheet'>
     <title>Memespace</title>
+    <i class="far fa-heart"></i>
+
+
 </head>
 <body>
     
@@ -20,10 +24,11 @@
     
     <!-- creating cards and uploading here -->
     <div id = 'feedContent'>
+        <h2 id='myFeed'>My Feed</h2>
     </div>
 
     <div id ='newPost'>
-
+        <h3>Create new post below:</h3>
         <input type = 'text' placeholder="imgURL" id = 'newPostURL'>
         <input type = 'text' placeholder="caption" id = 'newPostCaption'>
         <button id='submitPost'>Submit new post!</button>

@@ -7,7 +7,7 @@ body{
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: repeat(3, 3% auto 3%);
+    grid-template-rows: repeat(3, 1% auto 3%);
     margin-top: 0px;
 }
 
@@ -35,10 +35,20 @@ a{
     grid-column-start: 2;
     grid-column-end: 3;
 }
+
 img{
     width:100%;
 }
 
+.post{
+    border: solid 2px grey; 
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.post p , .post h3{
+    margin-left: 10px;
+}
 footer{
     /* display:flex; */
     grid-row-start: 3;
