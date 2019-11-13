@@ -42,11 +42,11 @@ router.post('/register', async (req, res) => {
 //   console.log(req.body);
   try {
       let insertQuery = `
-      INSERT INTO posts(imgURL, caption, poster_id)
-      VALUES($1, $2, $3)  
+      INSERT INTO posts(imgURL, caption)
+      VALUES($1, $2)  
       ` 
       
-      await db.none(insertQuery, [req.body.imgURL, req.body.caption, req.body.poster_id]);
+      await db.none(insertQuery, [req.body.imgURL, req.body.caption]);
       res.json({
           payload: req.body,
           message: `Post was sent!`
