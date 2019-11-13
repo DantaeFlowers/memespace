@@ -5,7 +5,26 @@ html, body {
 body {
     display: flex;
     justify-content: center;
+    margin-top: 0px;
+
 }
+/* nav a{
+    color:white;
+    text-decoration: none;
+}
+
+ ul {
+    display: flex;
+    position:fixed;
+    margin-top:0px;
+    left: 0px;
+    right:0px;
+    background-color: rgb(255, 187, 86);
+    list-style-type: none;
+    padding: 1%;
+    justify-content: space-between;
+} */
+
 .register {
     margin: auto;
     padding: 50px;
@@ -18,8 +37,10 @@ body {
     margin: 5px;
     width: 90%;
 }
+
 #register_header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 #register_submit {
@@ -32,3 +53,4 @@ body {
     padding-left: 17%;
     font-size: 94%;
 }
+
