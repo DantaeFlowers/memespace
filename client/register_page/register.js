@@ -9,6 +9,7 @@ const registerUser = async (event) => {
     let lastName = document.querySelector("#last_name_input").value;
     let userName = document.querySelector("#username_input").value;
     let email = document.querySelector("#email_input").value;
+        // useableEmail(email);
     let password = document.querySelector("#register_password").value;
     let url = `http://localhost:8080/users/register`;
     let data = {
@@ -21,14 +22,14 @@ const registerUser = async (event) => {
         await axios.post(url, data)
         .then((response) => {
             if(response.data.status === "success") {
-                showMessage(response);
+                showSuccessMsg(response);
             }
             else {
                 showError(response)
             }
         })
     }
-const showMessage = (response) => {
+const showSuccessMsg = (response) => {
     let displayPara = document.querySelector("#display");
         displayPara.innerText = response.data.message;
         displayPara.className = "success";
@@ -55,3 +56,11 @@ const emailExists = () => {
         displayPara.className = "error";
         displayPara.innerText = "Email is in use. Please use another email."
 }  
+// const useableEmail = (emailStr) => {
+//     if(!emailStr.includes("@") || !emailStr.includes(".")) {
+//     let displayPara = document.querySelector("#display");
+//         displayPara.innerText = "Please enter a valid email."
+//         displayPara.className = "error";
+//     }
+//     return;
+// };
