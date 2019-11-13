@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () =>  {
    console.log("running ")
 loadUserInfo();
 loadPost();
-console.log(loadPost())
 })
 
 
