@@ -33,7 +33,12 @@ const displayCard = (un,url,cap,id) => {
     const image = document.createElement('img')
     image.src = url
     const caption = document.createElement('p')
-    caption.innerText = cap
+    caption.innerText = '\t' + cap
+    
+    let likeButton = document.createElement('i')
+    likeButton.className ="far fa-heart"
+    
+    caption.prepend(likeButton)
 
     postDiv.append(usernameTag, image, caption);
     feedDiv.appendChild(postDiv)
@@ -44,15 +49,14 @@ const displayCard = (un,url,cap,id) => {
 //create card 
 const createCard = (postsArr) => {
     for(let i =0; i < postsArr.length; i++){
-        
         let id = postsArr[i].id
         let username = postsArr[i].username
-        // if(username === null) {
-        //     username = "SuzetteIslam"
-        // }
         let imageurl = postsArr[i].imgurl
         let imgCaption = postsArr[i].caption
+
         displayCard(username, imageurl, imgCaption, id)
+        displayCard(username, imageurl, imgCaption)
+
         }
 }
 
