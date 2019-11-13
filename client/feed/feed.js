@@ -20,9 +20,11 @@ const getAllPosts = async () => {
 }
 
 //displays the card on the site
-const displayCard = (un,url,cap) => { 
+const displayCard = (un,url,cap,id) => { 
     const feedDiv = document.querySelector('#feedContent')
+    
     const postDiv = document.createElement('div');
+    postDiv.id = id;
     postDiv.setAttribute('class', 'post');
     const usernameTag = document.createElement('h3');
     usernameTag.innerText = un
@@ -42,21 +44,21 @@ const displayCard = (un,url,cap) => {
     
     postDiv.append(usernameTag, image, caption);
     feedDiv.appendChild(postDiv)
+    getLikes(id)
 
 }
 
 //create card 
 const createCard = (postsArr) => {
     for(let i =0; i < postsArr.length; i++){
-        // let postDiv = document.querySelector('.post')
+        let id = postsArr[i].id
         let username = postsArr[i].username
-        // if(username === null) {
-        //     username = "SuzetteIslam"
-        // }
         let imageurl = postsArr[i].imgurl
         let imgCaption = postsArr[i].caption
-       
+
+        displayCard(username, imageurl, imgCaption, id)
         displayCard(username, imageurl, imgCaption)
+
         }
 }
 
@@ -72,6 +74,23 @@ const postToDB = async (username, newImgURL, newCaption) =>{
     let newPostURL = `http://localhost:8080/posts/register` 
     try{
         await axios.post(newPostURL, {imgURL: newImgURL, caption: newCaption, username: username});
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getLikes = async (id) => {
+    let likePosts = `http://localhost:8080/likes/${id}`;
+    try{
+        await axios.get(likePosts)
+        .then((response) => {
+            console.log(response.data.payload.length)
+            let likesLength = response.data.payload.length
+            let likes = document.createElement("p");
+            likes.innerText = likesLength
+            let div = document.getElementById(id);
+            div.appendChild(likes)
+         })
     } catch (error) {
         console.log(error)
     }
