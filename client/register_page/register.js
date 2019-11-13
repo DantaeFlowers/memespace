@@ -21,19 +21,37 @@ const registerUser = async (event) => {
         await axios.post(url, data)
         .then((response) => {
             if(response.data.status === "success") {
-                console.log(response)
-                nextPage(response);
+                showMessage(response);
+            }
+            else {
+                showError(response)
             }
         })
     }
-const nextPage = (response) => {
-    let containerDiv = document.querySelector("#register_div");
-    let pTag = document.createElement("p");
-        pTag.innerText = response.data.message;
-        pTag.className = "success";
-        containerDiv.append(pTag);
-    window.setTimeout(window.location = "../feed/feed.html", 4000);
+const showMessage = (response) => {
+    let displayPara = document.querySelector("#display");
+        displayPara.innerText = response.data.message;
+        displayPara.className = "success";
+    window.setTimeout(nextPage, 3000);
 }
-// const showError = (error) => {
-//     console.log("error")
-// }
+const nextPage = () => {
+    window.location = "../feed/feed.html"
+}
+const showError = (response) => {
+    let message = response.data.message;
+    if(message.includes("username")) {
+        usernameExists()
+    } else if(message.includes("email")) {
+        emailExists();
+    }
+}
+const usernameExists = () => {
+    let displayPara = document.querySelector("#display");
+        displayPara.className = "error";
+        displayPara.innerText = "Username exists. Please choose another username."
+}
+const emailExists = () => {
+    let displayPara = document.querySelector("#display");
+        displayPara.className = "error";
+        displayPara.innerText = "Email is in use. Please use another email."
+}  
