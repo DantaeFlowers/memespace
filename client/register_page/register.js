@@ -10,7 +10,7 @@ const registerUser = async (event) => {
     let userName = document.querySelector("#username_input").value;
     let email = document.querySelector("#email_input").value;
     let password = document.querySelector("#register_password").value;
-    let url = `http://localhost:8080/users/register`
+    let url = `http://localhost:8080/users/register`;
     let data = {
         "firstname": firstName, 
         "lastname": lastName, 
@@ -18,6 +18,40 @@ const registerUser = async (event) => {
         "email": email, 
         "userPassword": password
     };
-    let createdUserObj = await axios.post(url, data).then((response) => {console.log(response.data)})
-    
+        await axios.post(url, data)
+        .then((response) => {
+            if(response.data.status === "success") {
+                showMessage(response);
+            }
+            else {
+                showError(response)
+            }
+        })
+    }
+const showMessage = (response) => {
+    let displayPara = document.querySelector("#display");
+        displayPara.innerText = response.data.message;
+        displayPara.className = "success";
+    window.setTimeout(nextPage, 3000);
 }
+const nextPage = () => {
+    window.location = "../feed/feed.html"
+}
+const showError = (response) => {
+    let message = response.data.message;
+    if(message.includes("username")) {
+        usernameExists()
+    } else if(message.includes("email")) {
+        emailExists();
+    }
+}
+const usernameExists = () => {
+    let displayPara = document.querySelector("#display");
+        displayPara.className = "error";
+        displayPara.innerText = "Username exists. Please choose another username."
+}
+const emailExists = () => {
+    let displayPara = document.querySelector("#display");
+        displayPara.className = "error";
+        displayPara.innerText = "Email is in use. Please use another email."
+}  

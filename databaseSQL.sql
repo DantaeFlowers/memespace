@@ -18,7 +18,7 @@ CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     imgURL VARCHAR,
     caption VARCHAR,
-    username  INT REFERENCES users (username) ON DELETE CASCADE
+    username  VARCHAR
 );
 
 CREATE TABLE likes (
@@ -35,17 +35,18 @@ CREATE TABLE comments (
     commentors_id INT REFERENCES users (id) ON DELETE CASCADE
 );
 
-INSERT INTO users (firstname, lastname, username, email, userPassword)
-    VALUES ('Dantae', 'Flowers', 'DantaeFlowers', 'dantaeflowers@pursuit.org', 'Dantae1'),
-            ('Suzette', 'Islam', 'SuzetteIslam', 'suzetteislam@pursuit.org', 'Suzette1'),
-            ('Peter', 'Fiorentino', 'PFiorentino', 'peterfiorentino@pursuit.org', 'Peter1'),
-            ('Giselle', 'Sanchez', 'GSanchez', 'gisellesanchez@pursuit.org', 'Giselle1');
+INSERT INTO users (firstname, lastname, username, email, userPassword, userImage) 
+    VALUES ('Dantae', 'Flowers', 'DantaeFlowers', 'dantaeflowers@pursuit.org', 'Dantae1', 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/14590309_493087897549150_743346015237574308_n.jpg?_nc_cat=104&_nc_oc=AQl77-d-xKJrWzuJubOmqRGbk5nNWVfcLHJHgxj1B4nmVbPGxUutJFY0_KfndxX9DFg&_nc_ht=scontent-lga3-1.xx&oh=7e811d5542c49eb7d656d3f4361f8a01&oe=5E528AE4'),
+            ('Suzette', 'Islam', 'SuzetteIslam', 'suzetteislam@pursuit.org', 'Suzette1', 'https://media.licdn.com/dms/image/C4D03AQGNQu1S1tPbBg/profile-displayphoto-shrink_800_800/0?e=1579132800&v=beta&t=H14OI9YU-wWDrAbcCMLCvrnJ9_JS6yPP--lCRHZycoc'),
+            ('Peter', 'Fiorentino', 'PFiorentino', 'peterfiorentino@pursuit.org', 'Peter1', 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/16195442_1379707448709134_1649181788578759748_n.jpg?_nc_cat=101&_nc_oc=AQkoqYOySSMyyr66fWc95QUKSYiCuAm119rO1inUMzMfVJTZVtpoMdV7o-V2Iy64zUQ&_nc_ht=scontent-lga3-1.xx&oh=274ae2f075aeddc740390f7f1dfd20fb&oe=5E5D624F'),
+            ('Giselle', 'Sanchez', 'GSanchez', 'gisellesanchez@pursuit.org', 'Giselle1', 'https://media.licdn.com/dms/image/C4E03AQHKmfvQpkRZaA/profile-displayphoto-shrink_800_800/0?e=1579132800&v=beta&t=IEUnvyK-lz7ErSW7l7IBx4fbzrO1XWZ_hvBBVSTA0Wo');
 
 INSERT INTO posts (imgURL, caption, username)
-    VALUES ('https://pics.me.me/when-youre-getting-roasted-but-you-got-no-comebacks-the-14043476.png', 'Why is his face like that?', 3),
-            ('https://pbs.twimg.com/media/Dd0w7y9UQAAY2hW.jpg', 'All he is missing is the Timberland boots', 2),
-            ('https://pics.me.me/1428-real-facr-epstein-didnt-kill-himself-real-facts-plastic-65110683.png', 'I really do love snapple too!', 1),
-            ('https://static3.cbrimages.com/wordpress/wp-content/uploads/2019/05/Spider-Man-meme.jpeg', 'I like the spiderman one', 4);
+    VALUES ('https://pics.me.me/when-youre-getting-roasted-but-you-got-no-comebacks-the-14043476.png', 'Why is his face like that?', 'PFiorentino'),
+            ('https://pbs.twimg.com/media/Dd0w7y9UQAAY2hW.jpg', 'All he is missing is the Timberland boots', 'SuzetteIslam'),
+            ('https://pics.me.me/1428-real-facr-epstein-didnt-kill-himself-real-facts-plastic-65110683.png', 'I really do love snapple too!', 'DantaeFlowers'),
+            ('https://static3.cbrimages.com/wordpress/wp-content/uploads/2019/05/Spider-Man-meme.jpeg', 'I like the spiderman one', 'GSanchez'),
+            ('https://i.imgflip.com/3g1d4k.jpg', 'Ben Be Like', 'PFiorentino');
 
 INSERT INTO likes (post_id, posters_id, liker_id)
     VALUES (1, 3, 4),
@@ -55,3 +56,4 @@ INSERT INTO likes (post_id, posters_id, liker_id)
 INSERT INTO comments (comment, post_id, poster_id, commentors_id)
     VALUES ('LMAOOOO', 3, 4, 1);
 
+SELECT * FROM posts;

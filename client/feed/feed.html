@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src = 'feed.js'></script>
+    <script src = './feed.js'></script>
+    <link href = "./feed.css" rel='stylesheet'>
     <title>Memespace</title>
 </head>
 <body>
@@ -19,9 +20,15 @@
     
     <!-- creating cards and uploading here -->
     <div id = 'feedContent'>
-        
     </div>
 
-    <footer><a href="../about_page/about.html">About us</a></footer>
+    <div id ='newPost'>
+
+        <input type = 'text' placeholder="imgURL" id = 'newPostURL'>
+        <input type = 'text' placeholder="caption" id = 'newPostCaption'>
+        <button id='submitPost'>Submit new post!</button>
+    </div>
+    <footer><hr width = 75%>
+        <a href="../about_page/about.html">About us</a></footer>
 </body>
 </html>
