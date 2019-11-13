@@ -1,30 +1,24 @@
 document.addEventListener('DOMContentLoaded', () =>  {
    console.log("running ")
 loadUserInfo();
-//loadPost();
 })
 
-async function loadAUser() {
-   const url2 =`http://localhost:8080/users/${id}`
-   console.log('User has been loaded')
-}
 
 async function loadUserInfo () {
-   const url = 'http://localhost:8080/users/'
-   const url2 =`http://localhost:8080/users/${id}`
+   const url = 'http://localhost:8080/users/2'
       console.log('page has loaded');
       try{
         
-         let userArr =  await axios.get(url)
+         let user2 =  await axios.get(url)
         
         .then((response)=> 
         
         {return response.data.payload});
         
-        console.log("userArr", userArr)
+        console.log("user2", user2)
         
 
-        createUserCard(userArr)
+        createUserCard(user2)
 
 
       } catch (error){
@@ -56,13 +50,15 @@ async function loadUserInfo () {
 
 //...
 
-function createUserCard (userArr) {
-   for(let i =0; i < userArr.length; i++){
-      let userName = (userArr[i].username);
-      let userimage = (userArr[i].userImage);
-      let email = (userArr[i].email);
-      displayUserCard(userName, userimage, email);
-      }
+function createUserCard (user) {
+   console.log("user", user)
+   //for(let i =0; i < user.length; i++){
+      let userName = (user.username);
+      let userimage = (user.userimage);
+      console.log("user image url",user.userimage )
+      let email = (user.email);
+      displayUserCard(userName, userimage);
+     // }
 }
 
 function displayUserCard (user,url) { 
@@ -71,7 +67,6 @@ function displayUserCard (user,url) {
    userDiv.setAttribute ('class', 'img')
    const userName = document.createElement('h2');
    const Img = document.createElement('img');
-   //userCard.id = user.fetchUserId; 
    userName.innerText = user;
    Img.src = url;
    userDiv.append(userName, Img);
