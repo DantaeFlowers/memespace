@@ -50,9 +50,12 @@ const displayCard = (un,url,cap,id) => {
     
     caption.prepend(likeButton)
     
-    postDiv.append(usernameTag, image, caption);
-    feedDiv.appendChild(postDiv)
+    let numberOfLikes = document.createElement("p");
+    numberOfLikes.id = `likes${id}`;
     getLikes(id)
+
+    postDiv.append(usernameTag, image, caption, numberOfLikes);
+    feedDiv.appendChild(postDiv)
 }
 
 //create card 
@@ -91,10 +94,11 @@ const getLikes = async (id) => {
         .then((response) => {
             console.log(response.data.payload.length)
             let likesLength = response.data.payload.length
-            let likes = document.createElement("p");
-            likes.innerText = likesLength
-            let div = document.getElementById(id);
-            div.appendChild(likes)
+            let numberOfLikes = document.getElementById(`likes${id}`)
+            // let likes = document.createElement("p");
+            numberOfLikes.innerText = likesLength
+            // let div = document.getElementById(id);
+            // div.appendChild(likes)
          })
     } catch (error) {
         console.log(error)
@@ -107,6 +111,7 @@ async function postLike(id){
     let likeLink = `http://localhost:8080/likes/${id}`
     try{
          await axios.post(likeLink, {post_id: id, liker_name: 'SuzetteIslam'})
+         getLikes(id)
     } catch (error) {
         console.log(error);
     }
