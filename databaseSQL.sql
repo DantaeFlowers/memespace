@@ -29,9 +29,8 @@ CREATE TABLE likes (
 CREATE TABLE comments (
     comment_id SERIAL PRIMARY KEY,
     comment VARCHAR,
-    post_id INT REFERENCES posts (id) ON DELETE CASCADE,
-    poster_id INT REFERENCES users (id) ON DELETE CASCADE,
-    commentors_id INT REFERENCES users (id) ON DELETE CASCADE
+    post_id INT,
+    commentors_name VARCHAR
 );
 
 INSERT INTO users (firstname, lastname, username, email, userPassword, userImage) 
@@ -56,10 +55,12 @@ INSERT INTO likes (post_id, liker_name)
             (3, 'SuzetteIslam'),
             (3, 'PFiorentino');
 
-INSERT INTO comments (comment, post_id, poster_id, commentors_id)
-    VALUES ('LMAOOOO', 3, 4, 1);
+INSERT INTO comments (comment, post_id, commentors_name)
+    VALUES ('LMAOOOO', 5, 'DantaeFlowers'),
+           ('This is the most perfect meme ever', 1, 'GSanchez') ;
 
 
 
 -- SELECT * FROM posts;
-SELECT * FROM likes;
+-- SELECT * FROM likes;
+SELECT * FROM comments WHERE post_id = 1;
