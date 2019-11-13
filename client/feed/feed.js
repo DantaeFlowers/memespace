@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
     getAllPosts();
     const newPostSubmit = document.querySelector('#submitPost')
     newPostSubmit.addEventListener('click', getNewPostInfo);
+
+    let myFeed = document.getElementById("feedContent");
+    myFeed.addEventListener("click", (event)=> {
+        let id = event.target.parentNode.id;
+        console.log(id)
+        if(event.target.src) {
+            console.log(id)
+            postLike(id)
+        }
+        console.log(event.target)
+    })
 })
 
 //get all posts function for the feed once user page is loaded
@@ -91,8 +102,8 @@ const getLikes = async (id) => {
 }
 
      
-const postLike = async (id) => {
-    console.log("hi")
+async function postLike(id){
+    console.log("hi", id)
     let likeLink = `http://localhost:8080/likes/${id}`
     try{
          await axios.post(likeLink, {post_id: id, liker_name: 'SuzetteIslam'})
