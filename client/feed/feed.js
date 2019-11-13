@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     getAllPosts();
     const newPostSubmit = document.querySelector('#submitPost')
     newPostSubmit.addEventListener('click', getNewPostInfo);
-
 })
 
 //get all posts function for the feed once user page is loaded
@@ -39,11 +38,10 @@ const displayCard = (un,url,cap,id) => {
     likeButton.className ="far fa-heart"
     
     caption.prepend(likeButton)
-
+    
     postDiv.append(usernameTag, image, caption);
     feedDiv.appendChild(postDiv)
     getLikes(id)
-
 }
 
 //create card 
@@ -55,8 +53,6 @@ const createCard = (postsArr) => {
         let imgCaption = postsArr[i].caption
 
         displayCard(username, imageurl, imgCaption, id)
-        displayCard(username, imageurl, imgCaption)
-
         }
 }
 
@@ -91,6 +87,17 @@ const getLikes = async (id) => {
          })
     } catch (error) {
         console.log(error)
+    }
+}
+
+     
+const postLike = async (id) => {
+    console.log("hi")
+    let likeLink = `http://localhost:8080/likes/${id}`
+    try{
+         await axios.post(likeLink, {post_id: id, liker_name: 'SuzetteIslam'})
+    } catch (error) {
+        console.log(error);
     }
 }
 
