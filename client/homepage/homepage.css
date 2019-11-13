@@ -1,0 +1,58 @@
+body, html {
+    display: flex;
+    background-image: url("https://i.kym-cdn.com/entries/icons/original/000/006/428/637738.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#title{
+  position: relative;
+  width: 520px;
+  height:300px;
+  margin: 0 auto;
+  font-size: 70px;
+}
+
+#title span {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 70px;
+    height: 300px;
+    margin-left: -35px;
+    line-height: 530px; /* height*2 - font-size */
+    text-align: center;
+    transform-origin: top center;
+}
+
+#title span:nth-of-type(1)  {
+    transform: rotate(90deg);
+  }
+  #title span:nth-of-type(2)  {
+    transform: rotate(75deg);
+  }
+  #title span:nth-of-type(3)  {
+    transform: rotate(50deg);
+  }
+  #title span:nth-of-type(4)  {
+    transform: rotate(25deg);
+  }
+  #title span:nth-of-type(5)  {
+    transform: rotate(0deg);
+  }
+  #title span:nth-of-type(6)  {
+    transform: rotate(-25deg);
+  }
+  #title span:nth-of-type(7)  {
+    transform: rotate(-50deg);
+  }
+  #title span:nth-of-type(8)  {
+    transform: rotate(-75deg);
+  }
+  #title span:nth-of-type(9)  {
+    transform: rotate(-90deg);
+  }
