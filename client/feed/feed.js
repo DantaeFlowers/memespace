@@ -52,7 +52,7 @@ const displayCard = (un,url,cap,id) => {
 
 
     
-    caption.prepend(likeButton, commentButton)
+    caption.prepend(likeButton)
   
     let numberOfLikes = document.createElement("p");
     numberOfLikes.id = `likes${id}`;
