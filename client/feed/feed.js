@@ -5,19 +5,18 @@ getAllPosts();
 //get all posts function for the feed once user page is loaded
 const getAllPosts = async () => {
     console.log('page has loaded');
-    const postsURL = 'http://localhost:8080/posts/all'
-    try {
-      let postsArr =  await axios.get(postsURL)
-      .then((response)=> {return response.data.payload});
+    let postsURL = `http://localhost:8080/posts/all` 
+    try{
+      let postsArr =  await axios.get(postsURL).then((response)=> {return response.data.payload});
       console.log(postsArr)
       createCard(postsArr);
+
      
     } catch (error){
         console.log(error)
     }
     
 }
-
 
 
 const displayCard = (un,url,cap) => { 
@@ -47,6 +46,7 @@ const createCard = (postsArr) => {
 }
 
 //get single posts
+
 const getSinglePost = () =>{
     event.preventDefault();
 }
