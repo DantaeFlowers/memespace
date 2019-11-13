@@ -22,9 +22,8 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE likes (
-    post_id INT REFERENCES posts (id) ON DELETE CASCADE,
-    posters_id INT REFERENCES users (id) ON DELETE CASCADE,
-    liker_id INT REFERENCES users (id) ON DELETE CASCADE
+    post_id INT,
+    liker_name VARCHAR
 );
 
 CREATE TABLE comments (
@@ -48,12 +47,17 @@ INSERT INTO posts (imgURL, caption, username)
             ('https://static3.cbrimages.com/wordpress/wp-content/uploads/2019/05/Spider-Man-meme.jpeg', 'I like the spiderman one', 'GSanchez'),
             ('https://i.imgflip.com/3g1d4k.jpg', 'Ben Be Like', 'PFiorentino');
 
-INSERT INTO likes (post_id, posters_id, liker_id)
-    VALUES (1, 3, 4),
-            (2, 4, 2),
-            (4, 3, 1);
+INSERT INTO likes (post_id, liker_name)
+    VALUES (1, 'DantaeFlowers'),
+            (1, 'GSanchez'),
+            (1, 'SuzetteIslam'),
+            (1, 'PFiorentino'),
+            (2, 'GSanchez'),
+            (3, 'SuzetteIslam'),
+            (3, 'PFiorentino');
 
 INSERT INTO comments (comment, post_id, poster_id, commentors_id)
     VALUES ('LMAOOOO', 3, 4, 1);
 
-SELECT * FROM posts;
+-- SELECT * FROM posts;
+SELECT * FROM likes;
