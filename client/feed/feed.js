@@ -49,13 +49,12 @@ const displayCard = (un,url,cap,id) => {
     caption.innerText = '\t\t' + '\t' + cap
     let likeButton = document.createElement('i')
     likeButton.className ="far fa-heart"
-
-
-    
-    caption.prepend(likeButton)
-  
     let numberOfLikes = document.createElement("p");
     numberOfLikes.id = `likes${id}`;
+
+    
+    numberOfLikes.append(likeButton)
+
     
 
     let commentBox = document.createElement("input");
@@ -70,7 +69,15 @@ const displayCard = (un,url,cap,id) => {
     getLikes(id)
     getComments(id)
 
-    postDiv.append(usernameTag, image, caption, numberOfLikes, commentBox, commentButton);
+    let likeDiv = document.createElement("div");
+    likeDiv.append(likeButton, numberOfLikes);
+    likeDiv.style.display = "flex";
+    likeDiv.style.flexDirection = "row";
+
+    numberOfLikes.style.margin = "1%";
+    likeButton.style.margin = "2%";
+
+    postDiv.append(usernameTag, image, caption, likeDiv, commentBox, commentButton);
     feedDiv.appendChild(postDiv)
 }
 

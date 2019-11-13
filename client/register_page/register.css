@@ -4,19 +4,13 @@ html, body {
 body {
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
-=======
     margin-top: 0px;
-
->>>>>>> 8e0bea850be130208e696d667fcdc51a4ca3ed2c
+    background-color:rgb(240,248,255)
+    ;
 }
 #register_div {
     width: 55%;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8e0bea850be130208e696d667fcdc51a4ca3ed2c
 .register {
     margin: auto;
     padding: 50px;
@@ -46,10 +40,6 @@ body {
     margin: 10px;
     padding-top: 20px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8e0bea850be130208e696d667fcdc51a4ca3ed2c
 #register_header {
     display: flex;
     flex-direction: column;
@@ -66,3 +56,10 @@ body {
     font-size: 94%;
 }
 
+footer{
+    margin-bottom: 0px;
+    align-content: flex-end;
+    position: absolute;
+    bottom: 10pt;
+    right:10pt;
+}
