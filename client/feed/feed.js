@@ -28,8 +28,6 @@ const getAllPosts = async () => {
       let postsArr =  await axios.get(postsURL).then((response)=> {return response.data.payload});
     //   console.log(postsArr)
       createCard(postsArr);
-
-     
     } catch (error){
         console.log(error)
     }
@@ -48,13 +46,14 @@ const displayCard = (un,url,cap,id) => {
     const image = document.createElement('img')
     image.src = url
     const caption = document.createElement('p')
-    caption.innerText = '\t' + cap
-    
+    caption.innerText = '\t\t' + '\t' + cap
     let likeButton = document.createElement('i')
     likeButton.className ="far fa-heart"
+
+
     
-    caption.prepend(likeButton)
-    
+    caption.prepend(likeButton, commentButton)
+  
     let numberOfLikes = document.createElement("p");
     numberOfLikes.id = `likes${id}`;
     
