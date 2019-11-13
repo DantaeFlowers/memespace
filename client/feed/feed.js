@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(event.target.src) {
             console.log(id)
             postLike(id)
+        } else if (event.target.innerText === "Post Comment") {
+            console.log("hi Pete")
+            postComment(id)
         }
         console.log(event.target)
     })
+    
+
 })
 
 //get all posts function for the feed once user page is loaded
@@ -52,11 +57,20 @@ const displayCard = (un,url,cap,id) => {
     let numberOfLikes = document.createElement("p");
     numberOfLikes.id = `likes${id}`;
     
-    postDiv.append(usernameTag, image, caption, numberOfLikes);
-    feedDiv.appendChild(postDiv)
-    getLikes(id)
 
-    postDiv.append(usernameTag, image, caption, numberOfLikes);
+    let commentBox = document.createElement("input");
+    commentBox.id = `input${id}`
+    let commentButton = document.createElement("button");
+    commentButton.innerText = "Post Comment"
+    commentButton.id = `commentBox${id}`
+    
+
+
+
+    getLikes(id)
+    getComments(id)
+
+    postDiv.append(usernameTag, image, caption, numberOfLikes, commentBox, commentButton);
     feedDiv.appendChild(postDiv)
 }
 
@@ -119,3 +133,39 @@ async function postLike(id){
     }
 }
 
+const getComments = async (id) => {
+    let comments = `http://localhost:8080/comments/${id}`;
+    try {
+        await axios.get(comments)
+        .then((response) => {
+            for (let i of response.data.payload) {
+                let comment = document.createElement("p");
+                comment.innerText = `${i.commentors_name}: ${i.comment}`;
+                let div = document.getElementById(id);
+                div.append(comment);
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const postComment = async (id) => {
+    let commentLink = `http://localhost:8080/comments/${id}`
+    let commentBox = document.getElementById(`input${id}`).value
+    try {
+        await axios.post(commentLink, {comment: commentBox, post_id: id, commentors_name: "SuzetteIslam"})
+        .then ((response) => {
+            let commentInfo = response.data.payload;
+            console.log(commentInfo)
+            let comment = document.createElement("p");
+            comment.innerText = `${commentInfo.commentors_name}: ${commentInfo.comment}`;
+            let div = document.getElementById(id);
+            div.append(comment);
+
+        })
+
+    }catch (error) {
+        console.log(error)
+    }
+}
