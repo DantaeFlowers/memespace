@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const newPostSubmit = document.querySelector('#submitPost')
     newPostSubmit.addEventListener('click', getNewPostInfo);
 
+    let myFeed = document.getElementById("feedContent");
+    myFeed.addEventListener("click", (event)=> {
+        let id = event.target.parentNode.id;
+        console.log(id)
+        if(event.target.src) {
+            console.log(id)
+            postLike(id)
+        }
+        console.log(event.target)
+    })
 })
 
 //get all posts function for the feed once user page is loaded
@@ -35,17 +45,19 @@ const displayCard = (un,url,cap,id) => {
     let likeButton = document.createElement('i')
     likeButton.className ="far fa-heart"
 
-    let commentButton = document.createElement('i')
-    commentButton.className = "far fa-comment-alt"
-
 
     
     caption.prepend(likeButton, commentButton)
+  
+    let numberOfLikes = document.createElement("p");
+    numberOfLikes.id = `likes${id}`;
     
-    postDiv.append(usernameTag, image, caption);
+    postDiv.append(usernameTag, image, caption, numberOfLikes);
     feedDiv.appendChild(postDiv)
     getLikes(id)
 
+    postDiv.append(usernameTag, image, caption, numberOfLikes);
+    feedDiv.appendChild(postDiv)
 }
 
 //create card 
@@ -57,8 +69,6 @@ const createCard = (postsArr) => {
         let imgCaption = postsArr[i].caption
 
         displayCard(username, imageurl, imgCaption, id)
-        displayCard(username, imageurl, imgCaption)
-
         }
 }
 
@@ -86,13 +96,26 @@ const getLikes = async (id) => {
         .then((response) => {
             console.log(response.data.payload.length)
             let likesLength = response.data.payload.length
-            let likes = document.createElement("p");
-            likes.innerText = likesLength
-            let div = document.getElementById(id);
-            div.appendChild(likes)
+            let numberOfLikes = document.getElementById(`likes${id}`)
+            // let likes = document.createElement("p");
+            numberOfLikes.innerText = likesLength
+            // let div = document.getElementById(id);
+            // div.appendChild(likes)
          })
     } catch (error) {
         console.log(error)
+    }
+}
+
+     
+async function postLike(id){
+    console.log("hi", id)
+    let likeLink = `http://localhost:8080/likes/${id}`
+    try{
+         await axios.post(likeLink, {post_id: id, liker_name: 'SuzetteIslam'})
+         getLikes(id)
+    } catch (error) {
+        console.log(error);
     }
 }
 

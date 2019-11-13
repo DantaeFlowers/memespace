@@ -59,5 +59,7 @@ INSERT INTO likes (post_id, liker_name)
 INSERT INTO comments (comment, post_id, poster_id, commentors_id)
     VALUES ('LMAOOOO', 3, 4, 1);
 
+
+
 -- SELECT * FROM posts;
 SELECT * FROM likes;
